@@ -20,7 +20,7 @@ impl JsonDb {
         value: &V,
     ) -> Result<Option<IVec>> {
         let value = serde_json::to_string(value).unwrap();
-        Ok(self.db.insert(key, value.as_bytes())?)
+        self.db.insert(key, value.as_bytes())
     }
 
     pub fn get<T: for<'a> DeDeserialize<'a>>(
