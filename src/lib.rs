@@ -1,6 +1,7 @@
 use std::path::Path;
 
-use serde::{de::Deserialize, ser::Serialize};
+use serde::{de::Deserialize as DeDeserialize, ser::Serialize as SerSerialize};
+pub use serde::{Deserialize, Serialize};
 use sled::{Db, IVec, Result};
 
 pub struct JsonDb {
@@ -13,7 +14,7 @@ impl JsonDb {
         Ok(JsonDb { db })
     }
 
-    pub fn insert<K: AsRef<[u8]>, V: ?Sized + Serialize>(
+    pub fn insert<K: AsRef<[u8]>, V: ?Sized + SerSerialize>(
         &self,
         key: K,
         value: &V,
@@ -22,7 +23,7 @@ impl JsonDb {
         Ok(self.db.insert(key, value.as_bytes())?)
     }
 
-    pub fn get<T: for<'a> Deserialize<'a>>(
+    pub fn get<T: for<'a> DeDeserialize<'a>>(
         &self,
         key: &dyn AsRef<[u8]>,
     ) -> std::result::Result<T, serde_json::Error> {
