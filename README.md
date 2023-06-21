@@ -1,3 +1,9 @@
+<div align=center>
+    
+[![Rust](https://github.com/Walker-00/sled_json/actions/workflows/rust.yml/badge.svg)](https://github.com/Walker-00/sled_json/actions/workflows/rust.yml)
+
+</div>
+
 # sled_json
 Rust based Sled Key-Value store db as Key-Structured Value Warpper
 
