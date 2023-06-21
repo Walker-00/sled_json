@@ -2,9 +2,9 @@
 Rust based Sled Key-Value store db as Key-Structured Value Warpper
 
 # Usage
+
 ```rs
-use serde::{Deserialize, Serialize};
-use sled_json::JsonDb;
+use sled_json::{JsonDb, Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Info {
