@@ -32,3 +32,22 @@ impl JsonDb {
         serde_json::from_str(&x)
     }
 }
+
+#[test]
+
+fn db_test() {
+    #[derive(Serialize, Deserialize, Debug)]
+    struct Info {
+        name: String,
+        age: u8,
+    }
+
+    let linus_walker = Info {
+        name: "Linus Walker".into(),
+        age: 14,
+    };
+    let db = JsonDb::open("db").unwrap();
+    db.insert("linus_walker", &linus_walker).unwrap();
+    let resul = db.get::<Info>(&"linus_walker".to_string()).unwrap();
+    println!("{resul:?}");
+}
