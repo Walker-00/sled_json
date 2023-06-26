@@ -9,10 +9,18 @@ Rust based Sled Key-Value store db as Key-Structured Value Warpper
 
 # Usage
 
-<h3> First We need to add require dependencies in <code> Cargo.toml </code> </h3>
+<h2> Cargo.toml </h2>
+
+```toml
+[dependencies]
+serde = { version = "1.0.164", features = ["derive"] }
+sled = "0.34.7"
+```
+<h2>main.rs</h2>
 
 ```rs
-use sled_json::{JsonDb, Serialize, Deserialize};
+use serde::{Serialize, Deserialize};
+use sled_json::JsonDb;
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Info {
