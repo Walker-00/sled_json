@@ -20,5 +20,7 @@ jobs:
       run: cargo clippy
     - name: Checking
       run: cargo check
+    - name: Test Case
+      run: cargo test --verbose
     - name: Build
       run: cargo build --verbose
