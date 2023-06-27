@@ -23,10 +23,7 @@ impl JsonDb {
         self.db.insert(key, value.as_bytes())
     }
 
-    pub fn get<T: for<'a> DeDeserialize<'a>>(
-        &self,
-        key: &dyn AsRef<[u8]>,
-    ) -> std::result::Result<Option<T>, sled::Error> {
+    pub fn get<T: for<'a> DeDeserialize<'a>>(&self, key: &dyn AsRef<[u8]>) -> Result<Option<T>> {
         match self.db.get(key.as_ref())? {
             Some(v) => {
                 let x = String::from_utf8(v.to_vec()).unwrap();
