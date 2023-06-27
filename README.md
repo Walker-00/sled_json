@@ -5,7 +5,7 @@
 </div>
 
 # sled_json
-Rust based Sled Key-Value store db as Key-Structured Value Warpper
+Rust based Sled Key-Value store db as Key-Structured Value Wrapper
 
 # Usage
 
@@ -41,4 +41,4 @@ fn main() {
 ```
 
 # Credit
-Just a Json Based Warpper for [SledDb](https://github.com/spacejam/sled) with the help of [Serde](https://github.com/serde-rs/serde)
+Just a Json Based Wrapper for [SledDb](https://github.com/spacejam/sled) with the help of [Serde](https://github.com/serde-rs/serde)
