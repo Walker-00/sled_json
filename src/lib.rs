@@ -26,10 +26,19 @@ impl JsonDb {
     pub fn get<T: for<'a> DeDeserialize<'a>>(
         &self,
         key: &dyn AsRef<[u8]>,
-    ) -> std::result::Result<T, serde_json::Error> {
-        let v = self.db.get(key.as_ref()).unwrap().unwrap();
-        let x = String::from_utf8(v.to_vec()).unwrap();
-        serde_json::from_str(&x)
+    ) -> std::result::Result<Option<T>, sled::Error> {
+        match self.db.get(key.as_ref())? {
+            Some(v) => {
+                let x = String::from_utf8(v.to_vec()).unwrap();
+                match serde_json::from_str::<T>(&x) {
+                    Ok(x_v) => Ok(Some(x_v)),
+                    Err(_) => Err(sled::Error::ReportableBug(
+                        "Error in Json parsing to given data structure!!".into(),
+                    )),
+                }
+            }
+            None => Ok(None),
+        }
     }
 }
 
