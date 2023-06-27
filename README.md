@@ -14,7 +14,7 @@ Rust based Sled Key-Value store db as Key-Structured Value Warpper
 ```toml
 [dependencies]
 serde = { version = "1.0.164", features = ["derive"] }
-sled = "0.34.7"
+sled = { git = "https://github.com/Walker-00/sled_json" }
 ```
 <h2>main.rs</h2>
 
@@ -41,4 +41,4 @@ fn main() {
 ```
 
 # Credit
-Just a Json Based Warpper for [SledDb](https://github.com/spacejam/sled)
+Just a Json Based Warpper for [SledDb](https://github.com/spacejam/sled) with the help of [Serde](https://github.com/serde-rs/serde)
