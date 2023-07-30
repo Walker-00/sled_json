@@ -14,7 +14,7 @@ Rust based Sled Key-Value store db as Key-Structured Value Wrapper
 ```toml
 [dependencies]
 serde = { version = "1.0.164", features = ["derive"] }
-sled = { git = "https://github.com/Walker-00/sled_json" }
+sled_json = { git = "https://github.com/Walker-00/sled_json" }
 ```
 <h2>main.rs</h2>
 
